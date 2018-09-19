@@ -1,199 +1,94 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "sites_deleteCoruswebapp_name": {
-            "defaultValue": "deleteCoruswebapp",
-            "type": "String"
-        },
-        "config_web_name": {
-            "defaultValue": "web",
-            "type": "String"
-        },
-        "hostNameBindings_deletecoruswebapp.azurewebsites.net_name": {
-            "defaultValue": "deletecoruswebapp.azurewebsites.net",
-            "type": "String"
-        },
-        "sites_deleteCoruswebapp_serverFarmId": {
-            "defaultValue": "/subscriptions/c4e702ab-167e-4ee3-9dd4-acd87e448e9b/resourceGroups/binaria/providers/Microsoft.Web/serverfarms/ServicePlan6922c743-98f6",
-            "type": "String"
-        }
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "baseResourceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the resource"
+      },
+      "maxLength": 15
     },
-    "variables": {},
-    "resources": [
-        {
-            "comments": "Se ha generalizado a partir del recurso '/subscriptions/c4e702ab-167e-4ee3-9dd4-acd87e448e9b/resourceGroups/deleteCoruswebapp/providers/Microsoft.Web/sites/deleteCoruswebapp'.",
-            "type": "Microsoft.Web/sites",
-            "kind": "app",
-            "name": "[parameters('sites_deleteCoruswebapp_name')]",
-            "apiVersion": "2016-08-01",
-            "location": "Central US",
-            "scale": null,
-            "properties": {
-                "enabled": true,
-                "hostNameSslStates": [
-                    {
-                        "name": "[concat(parameters('sites_deleteCoruswebapp_name'),'deletecoruswebapp.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "virtualIP": null,
-                        "thumbprint": null,
-                        "toUpdate": null,
-                        "hostType": "Standard"
-                    },
-                    {
-                        "name": "[concat(parameters('sites_deleteCoruswebapp_name'),'deletecoruswebapp.scm.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "virtualIP": null,
-                        "thumbprint": null,
-                        "toUpdate": null,
-                        "hostType": "Repository"
-                    }
-                ],
-                "serverFarmId": "[parameters('sites_deleteCoruswebapp_serverFarmId')]",
-                "reserved": false,
-                "siteConfig": null,
-                "scmSiteAlsoStopped": false,
-                "hostingEnvironmentProfile": null,
-                "clientAffinityEnabled": true,
-                "clientCertEnabled": false,
-                "hostNamesDisabled": false,
-                "containerSize": 0,
-                "dailyMemoryTimeQuota": 0,
-                "cloningInfo": null
-            },
-            "dependsOn": []
-        },
-        {
-            "comments": "Se ha generalizado a partir del recurso '/subscriptions/c4e702ab-167e-4ee3-9dd4-acd87e448e9b/resourceGroups/deleteCoruswebapp/providers/Microsoft.Web/sites/deleteCoruswebapp/config/web'.",
-            "type": "Microsoft.Web/sites/config",
-            "name": "[concat(parameters('sites_deleteCoruswebapp_name'), '/', parameters('config_web_name'))]",
-            "apiVersion": "2016-08-01",
-            "location": "Central US",
-            "scale": null,
-            "properties": {
-                "numberOfWorkers": 1,
-                "defaultDocuments": [
-                    "Default.htm",
-                    "Default.html",
-                    "Default.asp",
-                    "index.htm",
-                    "index.html",
-                    "iisstart.htm",
-                    "default.aspx",
-                    "index.php",
-                    "hostingstart.html"
-                ],
-                "netFrameworkVersion": "v4.0",
-                "phpVersion": "5.6",
-                "pythonVersion": "",
-                "nodeVersion": "",
-                "linuxFxVersion": "",
-                "windowsFxVersion": null,
-                "requestTracingEnabled": false,
-                "remoteDebuggingEnabled": false,
-                "remoteDebuggingVersion": null,
-                "httpLoggingEnabled": false,
-                "logsDirectorySizeLimit": 35,
-                "detailedErrorLoggingEnabled": false,
-                "publishingUsername": "[concat('$deleteCorus', parameters('config_web_name'),'app')]",
-                "publishingPassword": null,
-                "appSettings": null,
-                "azureStorageAccounts": {},
-                "metadata": null,
-                "connectionStrings": null,
-                "machineKey": null,
-                "handlerMappings": null,
-                "documentRoot": null,
-                "scmType": "None",
-                "use32BitWorkerProcess": true,
-                "webSocketsEnabled": false,
-                "alwaysOn": false,
-                "javaVersion": null,
-                "javaContainer": null,
-                "javaContainerVersion": null,
-                "appCommandLine": "",
-                "managedPipelineMode": "Integrated",
-                "virtualApplications": [
-                    {
-                        "virtualPath": "/",
-                        "physicalPath": "site\\wwwroot",
-                        "preloadEnabled": false,
-                        "virtualDirectories": null
-                    }
-                ],
-                "winAuthAdminState": 0,
-                "winAuthTenantState": 0,
-                "customAppPoolIdentityAdminState": false,
-                "customAppPoolIdentityTenantState": false,
-                "runtimeADUser": null,
-                "runtimeADUserPassword": null,
-                "loadBalancing": "LeastRequests",
-                "routingRules": [],
-                "experiments": {
-                    "rampUpRules": []
-                },
-                "limits": null,
-                "autoHealEnabled": false,
-                "autoHealRules": null,
-                "tracingOptions": null,
-                "vnetName": "",
-                "siteAuthEnabled": false,
-                "siteAuthSettings": {
-                    "enabled": null,
-                    "unauthenticatedClientAction": null,
-                    "tokenStoreEnabled": null,
-                    "allowedExternalRedirectUrls": null,
-                    "defaultProvider": null,
-                    "clientId": null,
-                    "clientSecret": null,
-                    "issuer": null,
-                    "allowedAudiences": null,
-                    "additionalLoginParams": null,
-                    "isAadAutoProvisioned": false,
-                    "googleClientId": null,
-                    "googleClientSecret": null,
-                    "googleOAuthScopes": null,
-                    "facebookAppId": null,
-                    "facebookAppSecret": null,
-                    "facebookOAuthScopes": null,
-                    "twitterConsumerKey": null,
-                    "twitterConsumerSecret": null,
-                    "microsoftAccountClientId": null,
-                    "microsoftAccountClientSecret": null,
-                    "microsoftAccountOAuthScopes": null
-                },
-                "cors": null,
-                "push": null,
-                "apiDefinition": null,
-                "autoSwapSlotName": null,
-                "localMySqlEnabled": false,
-                "managedServiceIdentityId": null,
-                "xManagedServiceIdentityId": null,
-                "ipSecurityRestrictions": null,
-                "http20Enabled": false,
-                "minTlsVersion": "1.2",
-                "ftpsState": "AllAllowed",
-                "reservedInstanceCount": 0
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_deleteCoruswebapp_name'))]"
-            ]
-        },
-        {
-            "comments": "Se ha generalizado a partir del recurso '/subscriptions/c4e702ab-167e-4ee3-9dd4-acd87e448e9b/resourceGroups/deleteCoruswebapp/providers/Microsoft.Web/sites/deleteCoruswebapp/hostNameBindings/deletecoruswebapp.azurewebsites.net'.",
-            "type": "Microsoft.Web/sites/hostNameBindings",
-            "name": "[concat(parameters('sites_deleteCoruswebapp_name'), '/', parameters('hostNameBindings_deletecoruswebapp.azurewebsites.net_name'))]",
-            "apiVersion": "2016-08-01",
-            "location": "Central US",
-            "scale": null,
-            "properties": {
-                "siteName": "deleteCoruswebapp",
-                "domainId": null,
-                "hostNameType": "Verified"
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_deleteCoruswebapp_name'))]"
-            ]
-        }
-    ]
+    "environments": {
+      "defaultValue": [
+        "Dev",
+        "QA",
+        "UAT",
+        "Preview"
+      ],
+      "type": "array",
+      "metadata": {
+        "description": "Array with the names for the environment slots"
+      },
+      "maxLength": 19
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    }
+  },
+  "variables": {
+    "standardPlanMaxAdditionalSlots": 4,
+    "webAppPortalName": "[concat(parameters('baseResourceName'), 'Portal')]",
+    "appServicePlanName": "[concat('AppServicePlan-', parameters('baseResourceName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-08-01",
+      "type": "Microsoft.Web/serverfarms",
+      "kind": "app",
+      "name": "[variables('appServicePlanName')]",
+      "location": "[parameters('location')]",
+      "comments": "This app service plan is used for the web app and slots.",
+      "tags": {
+        "displayName": "AppServicePlan"
+      },
+      "properties": {},
+      "dependsOn": [],
+      "sku": {
+        "name": "[if(lessOrEquals(length(parameters('environments')), variables('standardPlanMaxAdditionalSlots')), 'S1', 'P1')]"
+      }
+    },
+    {
+      "apiVersion": "2016-08-01",
+      "type": "Microsoft.Web/sites",
+      "kind": "app",
+      "name": "[variables('webAppPortalName')]",
+      "location": "[parameters('location')]",
+      "comments": "This is the web app, also the default 'nameless' slot.",
+      "tags": {
+        "displayName": "WebApp"
+      },
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+      ]
+    },
+    {
+      "apiVersion": "2016-08-01",
+      "type": "Microsoft.Web/sites/slots",
+      "name": "[concat(variables('webAppPortalName'), '/', parameters('environments')[copyIndex()])]",
+      "kind": "app",
+      "location": "[parameters('location')]",
+      "comments": "This specifies the web app slots.",
+      "tags": {
+        "displayName": "WebAppSlots"
+      },
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', variables('webAppPortalName'))]"
+      ],
+      "copy": {
+        "name": "webPortalSlot",
+        "count": "[length(parameters('environments'))]"
+      }
+    }
+  ]
 }
